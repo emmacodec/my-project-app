@@ -1,27 +1,24 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom/client';
 
+import './index.css';
+
 const BookList =() => {
-    return <section>
+    return <section className='booklist'>
         <Book />
         <Book />
         <Book />
         <Book />
     </section>
 }
-
+const author = 'Robert Kiyosaki';
 const Book = () => {
-    return <article>
-       <Image />
-       <Title />
-       <Author />
+    const title = 'Rich Dad Poor Dad';
+    return <article className='book'>
+       <img src='/images/book-1.jpg' alt='Rich Dad Poor Dad' />
+       <h2>{title.toUpperCase()}</h2>
+       <h4>{author.toUpperCase()}</h4>
     </article>
-}
-
-const Image = () => <img src='https://m.media-amazon.com/images/I/51u8ZRDCVoL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg' />
-const Title = () => <h2>Rich Dad Poor Dad</h2>
-const Author = () => {
-    return <h4>Robert Kiyosaki</h4>
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
