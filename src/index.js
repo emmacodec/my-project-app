@@ -2,24 +2,43 @@ import React from 'react';
 import  ReactDOM  from 'react-dom/client';
 
 import './index.css';
+const books = [
+ {
+    author: 'Robert Kiyosaki',
+    title: 'Rich Dad Poor Dad',
+    img: '/images/book-1.jpg',
+ },
+{
+    author: 'Dr. Myles Munroe',
+    title: 'Maximizing Your Potential',
+    img: 'https://believersportal.com/wp-content/uploads/2016/09/Myles-Munroe-book.jpg',
+},
+
+];
 
 const BookList =() => {
-    return <section className='booklist'>
-        <Book />
-        <Book />
-        <Book />
-        <Book />
+    return (
+    <section className='booklist'>
+        {books.map((book)=>{
+            const {img, title, author} = book
+            return <Book img={img} title={title} author={author} />
+        })} 
     </section>
-}
-const author = 'Robert Kiyosaki';
-const Book = () => {
-    const title = 'Rich Dad Poor Dad';
-    return <article className='book'>
-       <img src='/images/book-1.jpg' alt='Rich Dad Poor Dad' />
+    );
+};
+
+const Book = (props) => {
+    const {img, title, author} = props;
+    console.log(props);
+    return  (
+    <article className='book'>
+       <img src={img} alt={title} />
        <h2>{title.toUpperCase()}</h2>
        <h4>{author.toUpperCase()}</h4>
-    </article>
-}
+       
+       </article>
+    );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
