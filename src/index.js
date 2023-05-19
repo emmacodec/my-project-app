@@ -2,43 +2,41 @@ import React from 'react';
 import  ReactDOM  from 'react-dom/client';
 
 import './index.css';
-const books = [
- {
-    author: 'Robert Kiyosaki',
-    title: 'Rich Dad Poor Dad',
-    img: '/images/book-1.jpg',
- },
-{
-    author: 'Dr. Myles Munroe',
-    title: 'Maximizing Your Potential',
-    img: 'https://believersportal.com/wp-content/uploads/2016/09/Myles-Munroe-book.jpg',
-},
-
-];
+import { books } from './book';
+import Book from './Books';
 
 const BookList =() => {
     return (
     <section className='booklist'>
+        <EventExamples />
         {books.map((book)=>{
-            const {img, title, author} = book
-            return <Book img={img} title={title} author={author} />
+            return <Book {...book} key={book.id} />;
         })} 
     </section>
     );
 };
 
-const Book = (props) => {
-    const {img, title, author} = props;
-    console.log(props);
-    return  (
-    <article className='book'>
-       <img src={img} alt={title} />
-       <h2>{title.toUpperCase()}</h2>
-       <h4>{author.toUpperCase()}</h4>
-       
-       </article>
-    );
-};
+const EventExamples =() => {
+ return <section>
+        <form>
+            <h2>Typical Form</h2>
+            <input 
+            type='text' 
+            name='product' 
+            onChange={(e) => console.log(e.target.value) } 
+            style={{margin: '1rem 0'}} 
+            />
+            <button type='submit'>
+                SUBMIT
+                </button>
+            <div>
+            <button onClick={() => console.log('click me')} type='button'>
+                CLICK ME..!!
+                </button>
+            </div>
+        </form>
+    </section>;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
